@@ -1,5 +1,6 @@
 package com.example.pausa.elementosgraficos;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,11 +30,13 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.opcion1:
-                Toast.makeText(this,"Has seleccionado la opción 1",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Has seleccionado la opción 1",Toast.LENGTH_SHORT).show();
                 Log.e("Pau.ElementosGraficos","Has seleccionado la opción 1");
+                Intent i  = new Intent(this,MainActivity2.class);
+                startActivity(i);
                 return true;
             case R.id.opcion2:
-                Toast.makeText(this,"Has seleccionado la opción 2",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Has seleccionado la opción 2",Toast.LENGTH_SHORT).show();
                 Log.e("Pau.ElementosGraficos","Has seleccionado la opción 2");
                 return true;
             default:
