@@ -1,6 +1,7 @@
 package com.example.pausa.elementosgraficos;
 
 import android.content.DialogInterface;
+import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.MalformedInputException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -58,4 +63,6 @@ public class MainActivity2 extends AppCompatActivity {
         });
 
     }
+
+
 }

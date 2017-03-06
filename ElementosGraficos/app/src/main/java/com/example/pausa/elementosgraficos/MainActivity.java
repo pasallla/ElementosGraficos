@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.opcion2:
                 Toast.makeText(this,"Has seleccionado la opción 2",Toast.LENGTH_SHORT).show();
                 Log.e("Pau.ElementosGraficos","Has seleccionado la opción 2");
+                Intent intent  = new Intent(this,Imagen.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

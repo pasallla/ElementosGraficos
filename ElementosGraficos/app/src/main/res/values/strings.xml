@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ElementosGraficos</string>
+    <string name="title_activity_camara">Camara</string>
 </resources>
