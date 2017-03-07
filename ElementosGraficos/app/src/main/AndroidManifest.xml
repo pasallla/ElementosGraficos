@@ -27,7 +27,10 @@
             android:label="@string/title_activity_camara"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Imagen"></activity>
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
     </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
