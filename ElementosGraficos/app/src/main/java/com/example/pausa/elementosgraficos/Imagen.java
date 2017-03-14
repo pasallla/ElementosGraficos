@@ -51,17 +51,19 @@ public class Imagen extends AppCompatActivity {
 
     //onClick boton Hacer Foto
     public void hacerFoto(View v) {
+        try {
+            Intent intent = new Intent();
+            intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        Intent intent = new Intent();
-        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-       try {
             fileUri = obtenerUriImagen();
-            Log.d("Pau.ElementosGraficos","fileUri: " + fileUri);
+            Log.d("Pau.ElementosGraficos", "fileUri: " + fileUri);
+
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+            startActivityForResult(intent, TAKE_IMAGE);
         } catch (Exception ex) {
-            Log.e("Pau.ElementosGraficos", ex.toString());
+            Log.e("Pau.ElementosGraficos", "hacerfoto(): " + ex.toString());
         }
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-        startActivityForResult(intent, TAKE_IMAGE);
+
 
     }
 
@@ -114,15 +116,15 @@ public class Imagen extends AppCompatActivity {
             ponerImagen(ruta, image);
 
             //Enviamos la foto por email
-            enviarFotoPorEmail(ruta,new String[]{"pasallla@epsg.upv.es"},"Envio de foto por email","Esto es el texto");
+            enviarFotoPorEmail(ruta, new String[]{"pasallla@epsg.upv.es"}, "Envio de foto por email", "Esto es el texto");
         } else {
             Log.e("Pau.ElementosGraficos", "ruta = null !!!!!");
         }
     }
 
     // Enviamos por email una foto
-    private void enviarFotoPorEmail(Uri foto, String[] emails, String asunto, String texto){
-        Log.d("Pau.ElementosGraficos","foto a enviar: " + foto.toString());
+    private void enviarFotoPorEmail(Uri foto, String[] emails, String asunto, String texto) {
+        Log.d("Pau.ElementosGraficos", "foto a enviar: " + foto.toString());
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("image/jpeg");
         i.putExtra(Intent.EXTRA_STREAM, foto);
@@ -136,18 +138,18 @@ public class Imagen extends AppCompatActivity {
     }
 
     // Modificamos el ImageView para que muestre la imagen que obtenemos del Uri
-    private void ponerImagen(Uri ruta, ImageView i){
+    private void ponerImagen(Uri ruta, ImageView i) {
 
         try {
             Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), ruta);
-            ponerImagen(bitmap,i);
+            ponerImagen(bitmap, i);
         } catch (IOException ex) {
             Toast.makeText(this, "Estoy en el catch", Toast.LENGTH_SHORT).show();
         }
     }
 
     // Modificamos el ImageView para que muestre la imagen que obtenemos del Bitmap
-    private void ponerImagen (Bitmap b, ImageView i){
+    private void ponerImagen(Bitmap b, ImageView i) {
         i.setImageBitmap(b);
         i.setVisibility(View.VISIBLE);
     }

@@ -1,5 +1,6 @@
 package com.example.pausa.elementosgraficos;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
@@ -20,7 +21,7 @@ import java.util.Date;
 public class MainActivity2 extends AppCompatActivity {
 
     ListView lista;
-    ArrayAdapter<String> adaptador;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +31,11 @@ public class MainActivity2 extends AppCompatActivity {
         String[] opciones = new String[] {"Opción1", "Opción 2", "Opción 3", "Opción 4"};
 
         lista = (ListView) findViewById(R.id.lista);
-        adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,opciones);
 
-        lista.setAdapter(adaptador);
+        ponerListaEnListView(this,lista,opciones);
 
+
+        //Añadir onClick a los elementos
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -62,6 +64,15 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+    }
+
+    //Añadir array de stings a un ListView
+    private void ponerListaEnListView(Context context, ListView listView, String[] opcionesLista){
+        ArrayAdapter<String> adaptador;
+
+        adaptador = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1,opcionesLista);
+
+        listView.setAdapter(adaptador);
     }
 
 

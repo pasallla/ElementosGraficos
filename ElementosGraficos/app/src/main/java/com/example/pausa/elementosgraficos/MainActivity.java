@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+
+    //Añadimos las opciones al menú
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
@@ -25,24 +27,36 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+    //Creamos las acciones que deben hacer las opciones del menú
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.opcion1:
-                Toast.makeText(this,"Has seleccionado la opción 1",Toast.LENGTH_SHORT).show();
-                Log.e("Pau.ElementosGraficos","Has seleccionado la opción 1");
-                Intent i  = new Intent(this,MainActivity2.class);
-                startActivity(i);
+                opcion1();
                 return true;
             case R.id.opcion2:
-                Toast.makeText(this,"Has seleccionado la opción 2",Toast.LENGTH_SHORT).show();
-                Log.e("Pau.ElementosGraficos","Has seleccionado la opción 2");
-                Intent intent  = new Intent(this,Imagen.class);
-                startActivity(intent);
+                opcion2();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    //Acciones a hacer al pulsar la opción1 del menu
+    private void opcion1(){
+        Toast.makeText(this,"Has seleccionado la opción 1",Toast.LENGTH_SHORT).show();
+        Log.e("Pau.ElementosGraficos","Has seleccionado la opción 1");
+        Intent i  = new Intent(this,MainActivity2.class);
+        startActivity(i);
+    }
+
+    //Acciones a hacer al pulsar la opción2 del menu
+    private void opcion2(){
+        Toast.makeText(this,"Has seleccionado la opción 2",Toast.LENGTH_SHORT).show();
+        Log.e("Pau.ElementosGraficos","Has seleccionado la opción 2");
+        Intent intent  = new Intent(this,Imagen.class);
+        startActivity(intent);
     }
 }
